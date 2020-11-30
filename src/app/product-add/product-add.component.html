@@ -1,0 +1,39 @@
+
+
+<div class="card">
+<div class="card-body">
+<form [formGroup]="ngForm" novalidate>
+    <div class="form-group">
+    <label class="col-md-4"> product name</label>
+    <input type="text"  class="form-control" formControlName="productName" #productName/>
+    <div *ngIf="ngForm.controls['productName'].invalid && (ngForm.controls['productName'].dirty || ngForm.controls['productName'].touched)" class="alert alert-danger col-md-4">
+    <div *ngIf="ngForm.controls['productName'].errors.required">
+      product name is required
+    </div>
+    </div>
+    </div>
+    <div class="form-group">
+ <label class="col-md-4">product price</label>
+ <input type="text" name="productPrice" class="form-control" formControlName="productPrice" #productPrice/>
+ <div *ngIf="ngForm.controls['productPrice'].invalid && (ngForm.controls['productPrice'].dirty || ngForm.controls['productPrice'].touched)" class="alert alert-danger col-md-4">
+     <div *ngIf="ngForm.controls['productPrice'].errors.required">
+       product price is required
+     </div>
+
+ </div>
+    </div>
+    <div class="form-group">
+ <label class="col-md-4">product description</label>
+ <textarea class="form-control" rows="7" cols="5" formControlName="productDescription" #productDescription></textarea>
+ <div *ngIf="ngForm.controls['productDescription'].invalid && (ngForm.controls['productDescription'].dirty || ngForm.controls['productDescription'].touched)" class="alert alert-danger col-md-4">
+<div *ngIf="ngForm.controls['productDescription'].errors.required">
+ product description is required
+</div>
+ </div>
+    </div>
+    <div class="form-group">
+   <button type="submit" class="btn btn-primary">save product</button>
+    </div>
+</form>
+</div>
+</div>
