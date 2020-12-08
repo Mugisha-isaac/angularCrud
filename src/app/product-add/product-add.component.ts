@@ -9,8 +9,7 @@ import {ProductsService} from '../products.service';
 })
 export class ProductAddComponent implements OnInit {
  ngForm:FormGroup
-  ps: any;
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,private ps:ProductsService){ 
     this.createForm();
   }
   createForm(){

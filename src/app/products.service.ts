@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-uri = 'http://localhost:4000/products';
+uri = 'http://localhost:8080/products';
   constructor(private http:HttpClient) {}
     addProduct(productName,productPrice,productDescription){
       const obj ={
