@@ -17,4 +17,19 @@ uri = 'http://localhost:8080/products';
       this.http.post(`${this.uri}/add`,obj)
       .subscribe(res=>console.log('Done'));
     }
+    getProducts(){
+      return this.http.get(`${this.uri}`);
+    }
+    editProduct(id){
+     return this.http.get(`${this.uri}/edit/${id}`)
+    }
+    updateProduct(productName,productDescription,productPrice,id){
+      const obj ={
+        productName,
+        productPrice,
+        productDescription
+      };
+      this.http.post(`${this.uri}/update/${id}`,obj).subscribe(res=>console.log('Done'));
+    }
    }
+  

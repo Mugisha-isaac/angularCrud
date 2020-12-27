@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute,ParamMap,Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import {ProductsService} from '../products.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -6,10 +10,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+angForm : FormGroup;
+product: any = {};
+  constructor(private route:ActivatedRoute, private router: Router, private ps:ProductsService, private fb: FormBuilder) { 
+    this.createForm();
   }
+  createForm(){
+    this.angForm = this.fb.group({
+      productName:['',Validators.required],
+      productPrice:['',Validators.required],
+      productService:['',Validators.required]
+    })
+  }
+  ngOnInit(){
+    this.route.params.subscribe(params =>{
+      this.ps.editProduct(params['id']).subscribe(res=>{
+        this.product = res;
+      })
+    })
+  } 
+  updateProduct(productName,productDescription,productPrice,id){
+this.route.paramMap.subscribe((parmap:ParamMap)=>{
+// console.log(parmap.get([]));
+// console.log('hhhhhhhhhhhhh')
 
+})
+
+    this.route.params.subscribe(params=>{
+      this.ps.updateProduct(productName,productPrice,productDescription,params.id);
+      this.router.navigate(['products']);
+    })
+  }
 }
