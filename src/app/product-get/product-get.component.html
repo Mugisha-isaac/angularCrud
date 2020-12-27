@@ -12,7 +12,7 @@
     <td>{{product.productPrice}}</td>
     <td>{{product.productDescription}}</td>
     <td><a [routerLink]="['/edit',product._id]" class="btn btn-primary">Edit</a></td>
-    <td><a [routerLink]="" class="btn btn-danger">Delete</a></td>
+    <td><a (click)="deleteProduct(product._id)" class="btn btn-danger">Delete</a></td>
     </tr>
 </tbody>
 </table>

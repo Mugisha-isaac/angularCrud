@@ -15,7 +15,7 @@ uri = 'http://localhost:8080/products';
       };
       console.log(obj);
       this.http.post(`${this.uri}/add`,obj)
-      .subscribe(res=>console.log('Done'));
+      .subscribe(res=>console.log('product added successfully'));
     }
     getProducts(){
       return this.http.get(`${this.uri}`);
@@ -30,6 +30,9 @@ uri = 'http://localhost:8080/products';
         productDescription
       };
       this.http.post(`${this.uri}/update/${id}`,obj).subscribe(res=>console.log('Done'));
+    }
+    deleteProduct(id){
+      return this.http.delete(`${this.uri}/delete/${id}`);
     }
    }
   

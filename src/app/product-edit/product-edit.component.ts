@@ -30,10 +30,13 @@ product: any = {};
     })
   } 
   updateProduct(productName,productDescription,productPrice,id){
-this.route.paramMap.subscribe((parmap:ParamMap)=>{
-// console.log(parmap.get([]));
-// console.log('hhhhhhhhhhhhh')
-
+this.route.params.subscribe(params=>{
+// console.log(productName);
+// console.log(productDescription);
+// console.log(productPrice);
+// console.log(id);
+this.ps.updateProduct(productName,productDescription,productPrice,params.id);
+  this.router.navigate['products'];
 })
 
     this.route.params.subscribe(params=>{
